@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\CommentCard::class);
+            $table->string('digest')->index();
+            $table->string('http_referrer')->nullable();
+            $table->string('http_user_agent')->nullable();
+            $table->string('remote_ip', 50)->nullable();
             $table->timestamps();
         });
     }
